@@ -218,3 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+*.duckdb
+*.duckdb.wal
+market/target/
+market/logs/
+market/dbt_packages
+logs/

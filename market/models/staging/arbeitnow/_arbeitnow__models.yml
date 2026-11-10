@@ -12,4 +12,17 @@ models:
       - name: posted_at
         data_tests:
           - not_null
+  - name: stg_arbeitnow__job_types
+    description: One row per Arbeitnow ad and job type, as listed on the ad.
+    columns:
+      - name: source_job_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_arbeitnow__jobs')
+                field: source_job_id
+      - name: job_type
+        data_tests:
+          - not_null
           

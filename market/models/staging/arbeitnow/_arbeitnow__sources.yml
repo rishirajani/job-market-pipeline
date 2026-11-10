@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: arbeitnow
+    schema: raw_arbeitnow
+    tables: 
+      - name: arbeitnow_jobs
+      - name: arbeitnow_jobs__job_types
+      - name: arbeitnow_jobs__tags
+      

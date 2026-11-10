@@ -1,0 +1,2 @@
+dbt-duckdb==1.11.1
+dlt[duckdb]==1.32.0

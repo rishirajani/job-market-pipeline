@@ -225,3 +225,4 @@ market/target/
 market/logs/
 market/dbt_packages
 logs/
+market/.user.yml

@@ -10,7 +10,8 @@ SEARCH_TERMS = ["Data Engineer", "Analytics Engineer", "Data Analyst",
                 ]
 
 @dlt.resource(name="ba_jobs", primary_key="referenznummer", write_disposition="merge")
-def ba_jobs(days:int = 7, max_pages:int = 5):
+def ba_jobs(days: int = 7, max_pages: int = 5):
+    found = {}
     for term in SEARCH_TERMS:
         for page in range(1, max_pages + 1):
             params = {"was": term, "angebotsart": 1, "veroeffentlichtseit": days, 
@@ -19,11 +20,15 @@ def ba_jobs(days:int = 7, max_pages:int = 5):
             ads = response.json().get("ergebnisliste", [])
             print(f"{term} page {page}: {len(ads)} ads (total {response.json().get('maxErgebnisse')})")
             for ad in ads:
-                ad["search_term"] = term 
-            yield ads
+                ref = ad["referenznummer"]
+                if ref not in found:
+                    found[ref] = ad
+                    found[ref]["search_terms"] = []
+                found[ref]["search_terms"].append(term)
             if len(ads) < PAGE_SIZE:
                 break
             time.sleep(0.5)
+    yield list(found.values())
 
 if __name__ == "__main__":
     pipeline = dlt.pipeline(

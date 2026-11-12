@@ -7,4 +7,5 @@ sources:
       - name: ba_jobs
       - name: ba_job_details
       - name: ba_jobs__search_terms
+      - name: ba_jobs__stellenlokationen
       

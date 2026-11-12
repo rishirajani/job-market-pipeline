@@ -9,7 +9,9 @@ renamed as (
            title as job_title, 
            company_name,
            nullif(trim(location), '') as location,
+           cast(null as varchar) as country,
            remote as is_remote,
+           cast(null as boolean) as home_office_possible,
            url as job_url,
            to_timestamp(created_at) as posted_at, 
            trim(regexp_replace(

@@ -1,2 +1,3 @@
 dbt-duckdb==1.11.1
 dlt[duckdb]==1.32.0
+PyYAML==6.0.3

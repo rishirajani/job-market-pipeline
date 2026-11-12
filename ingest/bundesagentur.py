@@ -1,13 +1,21 @@
-import time, dlt, base64, duckdb
+import time, dlt, base64, duckdb, yaml, sys
 from dlt.sources.helpers import requests
+from pathlib import Path
 
 API = "https://rest.arbeitsagentur.de/jobboerse/jobsuche-service"
 HEADERS = {"X-API-Key": "jobboerse-jobsuche"}
 PAGE_SIZE = 100
-SEARCH_TERMS = ["Data Engineer", "Analytics Engineer", "Data Analyst", 
-                "Business Intelligence", "Ontology", "Knowledge Graph", 
-                "Knowledge Engineer", "Semantic Web", "Linked Data",
-                ]
+TERMS_FILE = Path(__file__).parent / 'search_terms.yml'
+
+try:
+    text = TERMS_FILE.read_text()
+except FileNotFoundError:
+    sys.exit(f"Search terms file is missing: {TERMS_FILE}")
+
+SEARCH_TERMS = (yaml.safe_load(text) or {}).get("terms")
+if not SEARCH_TERMS:
+    sys.exit(f"No search terms found under 'terms': {TERMS_FILE}")
+
 DETAILS_TABLE = "ba_job_details"
 
 @dlt.resource(name="ba_jobs", primary_key="referenznummer", write_disposition="merge")

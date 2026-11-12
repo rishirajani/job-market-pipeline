@@ -2,10 +2,10 @@ version: 2
 
 models:
   - name: stg_bundesagentur__jobs
-    description: One row per Bundesagentur job ad, with its description where details were fetched.
+    description: "One row per Bundesagentur job ad, with its description where details were fetched."
     columns:
       - name: source_job_id
-        description: The ad's Referenznummer.
+        description: "The ad's Referenznummer."
         data_tests:
           - unique
           - not_null

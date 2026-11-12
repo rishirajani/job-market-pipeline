@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: int_jobs__unioned
+    description: "One row per job ad from any source"
+    columns:
+      - name: job_id
+        description: "Unique across sources: source plus the source’s own ID"
+        data_tests:
+          - unique
+          - not_null
+      - name: source
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['bundesagentur', 'arbeitnow']

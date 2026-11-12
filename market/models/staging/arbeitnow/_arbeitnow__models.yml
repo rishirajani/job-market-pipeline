@@ -2,10 +2,10 @@ version: 2
 
 models:
   - name: stg_arbeitnow__jobs
-    description: One row per Arbeitnow job ad, renamed and typed.
+    description: "One row per Arbeitnow job ad, renamed and typed."
     columns:
       - name: source_job_id
-        description: The ad's slug on Arbeitnow.
+        description: "The ad's slug on Arbeitnow."
         data_tests:
           - unique
           - not_null
@@ -13,7 +13,7 @@ models:
         data_tests:
           - not_null
   - name: stg_arbeitnow__job_types
-    description: One row per Arbeitnow ad and job type, as listed on the ad.
+    description: "One row per Arbeitnow ad and job type, as listed on the ad."
     columns:
       - name: source_job_id
         data_tests:

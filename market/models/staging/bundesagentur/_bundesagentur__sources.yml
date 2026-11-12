@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: bundesagentur
+    schema: raw_bundesagentur
+    tables: 
+      - name: ba_jobs
+      - name: ba_job_details
+      - name: ba_jobs__search_terms
+      

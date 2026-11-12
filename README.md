@@ -1,6 +1,6 @@
 # job-market-pipeline
 
-A daily pipeline over job ads. It loads ads from public job APIs into DuckDB and models them with dbt, to answer questions such as which skills data- and knowledge-graph-roles demand, what their compensation is and what languages they require.
+A daily pipeline over job ads. It loads ads from public job APIs into DuckDB and models them with dbt, to answer questions such as which skills data and knowledge-graph roles demand, what their compensation is and what languages they require.
 
 **Status: in progress.** Loading and first staging models work; check roadmap.
 
